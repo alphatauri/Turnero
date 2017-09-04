@@ -1,0 +1,185 @@
+/* Creacion de la base de datos Laboratorio */
+/* se creará otra base de datos de nombre prueba para no alterar la funcional*/
+
+CREATE DATABASE laboratorio
+GO
+
+USE [laboratorio]
+GO
+
+/*Creacion de la Tabla Pacientes*/
+
+CREATE TABLE [Pacientes](
+	[DniPac] [numeric](8, 0) PRIMARY KEY,
+	[ApePac] [varchar](15) NOT NULL,
+	[NomPac] [varchar](20) NOT NULL,
+	[FecNacPac] [date] NOT NULL,
+	[GeneroPac] [varchar](10) NOT NULL,
+	[CallePac] [varchar](20) NULL,
+	[AlturaPac] [numeric](4, 0) NULL,
+	[CiudadPac] [varchar](20) NULL,
+	[ProvinciaPac] [int] NULL,
+	[DepartamentoPac] [int] NULL,
+	[LocalidadPac] [int] NULL,
+	[CarTelPac] [numeric](5, 0) NULL,
+	[TelPac] [numeric](9, 0) NULL,
+	)
+GO
+
+/*Creacion de la Tabla Profesionales*/	
+
+CREATE TABLE [Profesionales] (
+	[DniProf] [numeric](8, 0) PRIMARY KEY,
+	[ApeProf] [varchar](15) NOT NULL,
+	[NomProf] [varchar](20) NOT NULL,
+	[FecIngProf] [date] NOT NULL,
+	[CarTelProf] [numeric](5, 0) NULL,
+	[ProvinciaProf] [int] NULL,
+	[DepartamentoProf] [int] NULL,
+	[LocalidadProf] [int] NULL,
+	[TelProf] [numeric](9, 0) NULL,
+)
+GO
+
+/*Creacion de la Tabla Provincia*/
+
+CREATE TABLE [Provincias](
+	[ID] [int] IDENTITY(1,1) PRIMARY KEY,
+	[Nombre] [nvarchar](250) NOT NULL,
+	)
+GO
+
+/*Creacion de la Tabla Departamento*/
+
+CREATE TABLE [Departamento](
+	[ID] [int] IDENTITY(1,1) PRIMARY KEY,
+	[idProvincia] [int] NOT NULL,
+	[Nombre] [nvarchar](250) NOT NULL,
+	)
+GO
+
+/*Creacion de la Tabla Localidad*/	
+
+CREATE TABLE [Localidad](
+	[ID] [int] IDENTITY(1,1) PRIMARY KEY,
+	[idDepartamento] [int] NOT NULL,
+	[Nombre] [nvarchar](250) NOT NULL,
+	)
+GO
+
+/*Creacion de la Tabla Estado*/
+
+CREATE TABLE [Estado](
+	[IdEstado] [int] PRIMARY KEY,
+	[DescripcionEstado] [nchar](10) NULL,
+	)
+GO
+
+/*Creacion de la Tabla Agenda*/
+
+CREATE TABLE [agenda](
+	[IdPlan] [int] IDENTITY(1,1) PRIMARY KEY,
+	[DNIProfPlan] [numeric](8, 0) NULL,
+	[Consultorio] [varchar](10) NOT NULL,
+	[FechaDesde] [date] NOT NULL,
+	[FechaHasta] [date] NOT NULL,
+	[HoraDesde] [time](7) NOT NULL,
+	[HoraHasta] [time](7) NOT NULL,
+	[Slot] [numeric](2, 0) NOT NULL,
+	[Lunes] [bit] NULL,
+	[Martes] [bit] NULL,
+	[Miercoles] [bit] NULL,
+	[Jueves] [bit] NULL,
+	[Viernes] [bit] NULL,
+	)
+GO
+
+/*Creacion de la Tabla Consultorio*/
+	
+CREATE TABLE [Consultorio](
+	[Consultorio] [int] PRIMARY KEY,
+	[DescConsultorio] [varchar](15) NULL,
+	[ActivoCos] [int] NULL,
+	)
+GO
+
+/*Creacion de la Tabla Horarios*/
+
+CREATE TABLE [Horarios](
+	[IdTurno] [int] IDENTITY(1,1) PRIMARY KEY,
+	[IdPlan] [int] NULL,
+	[DNIPacAgenda] [numeric](8, 0) NULL,
+	[DNIProfAgenda] [numeric](8, 0) NULL,
+	[Consultorio] [varchar](10) NOT NULL,
+	[FechaTurno] [date] NOT NULL,
+	[HoraTurno] [time](7) NOT NULL,
+	)
+GO
+
+/*Creacion de la Tabla login*/
+
+CREATE TABLE [login](
+	[IdLogin] [int] IDENTITY(1,1) PRIMARY KEY,
+	[usuario] [varchar](20) NOT NULL,
+	[contrasena] [varchar](20) NOT NULL
+	)
+GO
+
+
+
+/* CREACION DE FOREIGN KEY DE LAS TABLAS DE DB LABORATORIO */
+
+/* TABLA Pacientes*/
+
+ALTER TABLE [Pacientes]  ADD  CONSTRAINT [FK_Pacientes_Departamento] FOREIGN KEY([DepartamentoPac])
+REFERENCES [Departamento] ([ID])
+GO
+
+ALTER TABLE [Pacientes] ADD  CONSTRAINT [FK_Pacientes_Localidad] FOREIGN KEY([LocalidadPac])
+REFERENCES [Localidad] ([ID])
+GO
+
+ALTER TABLE [Pacientes] ADD  CONSTRAINT [FK_Pacientes_Provincias] FOREIGN KEY([ProvinciaPac])
+REFERENCES [Provincias] ([ID])
+GO
+
+/* tabla profesionales*/
+
+ALTER TABLE [Profesionales] ADD  CONSTRAINT [FK_Profesionales_Departamento] FOREIGN KEY([DepartamentoProf])
+REFERENCES [Departamento] ([ID])
+GO
+
+ALTER TABLE [Profesionales] ADD  CONSTRAINT [FK_Profesionales_Localidad] FOREIGN KEY([LocalidadProf])
+REFERENCES [Localidad] ([ID])
+GO
+
+ALTER TABLE [Profesionales]  ADD  CONSTRAINT [FK_Profesionales_Provincia] FOREIGN KEY([ProvinciaProf])
+REFERENCES [Provincias] ([ID])
+GO
+
+/* tabla consultorio */
+
+ALTER TABLE [Consultorio] ADD  CONSTRAINT [FK_Consultorio_Estado] FOREIGN KEY([ActivoCos])
+REFERENCES [Estado] ([IdEstado])
+GO
+
+/* tabla horarios */
+
+ALTER TABLE [Horarios] ADD  CONSTRAINT [FK_Horarios_agenda] FOREIGN KEY([IdPlan])
+REFERENCES [agenda] ([IdPlan])
+GO
+
+ALTER TABLE [Horarios] ADD  CONSTRAINT [FK_Horarios_Pacientes] FOREIGN KEY([DNIPacAgenda])
+REFERENCES [Pacientes] ([DniPac])
+GO
+
+ALTER TABLE [Horarios] ADD  CONSTRAINT [FK_Horarios_Profesionales] FOREIGN KEY([DNIProfAgenda])
+REFERENCES [Profesionales] ([DniProf])
+GO
+
+/* insertar un usuario valido */
+
+INSERT INTO login (usuario, contrasena) values('"test"','"123"')
+GO
+
+/* fin del script*/
