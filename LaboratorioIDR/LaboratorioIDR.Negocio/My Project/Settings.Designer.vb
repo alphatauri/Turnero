@@ -53,28 +53,6 @@ Namespace My
                 Return defaultInstance
             End Get
         End Property
-        
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Program Files\Microsoft S"& _ 
-            "QL Server\MSSQL12.SQLEXPRESS\MSSQL\DATA.mdf"";Integrated Security=True;Connect Ti"& _ 
-            "meout=30")>  _
-        Public ReadOnly Property Valor() As String
-            Get
-                Return CType(Me("Valor"),String)
-            End Get
-        End Property
-        
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=PCJORGE;Initial Catalog=laboratorio;Integrated Security=True")>  _
-        Public ReadOnly Property laboratorioConnectionString() As String
-            Get
-                Return CType(Me("laboratorioConnectionString"),String)
-            End Get
-        End Property
     End Class
 End Namespace
 
@@ -86,9 +64,9 @@ Namespace My
     Friend Module MySettingsProperty
         
         <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")>  _
-        Friend ReadOnly Property Settings() As Global.LaboratorioIDR.My.MySettings
+        Friend ReadOnly Property Settings() As Global.LaboratorioIDR.Negocio.My.MySettings
             Get
-                Return Global.LaboratorioIDR.My.MySettings.Default
+                Return Global.LaboratorioIDR.Negocio.My.MySettings.Default
             End Get
         End Property
     End Module

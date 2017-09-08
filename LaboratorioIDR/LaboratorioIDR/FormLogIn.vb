@@ -1,30 +1,30 @@
 ﻿Imports System.Data.SqlClient
+Imports LaboratorioIDR.Datos
+Imports LaboratorioIDR.Negocio
+Imports LaboratorioIDR.PresentationLogic
 
-Public Class FormLogIn
+Public Class FormLogIn : Implements ILoginView
+    Private myServicioLogin As ServicioLogin
+
+    Sub New()
+        InitializeComponent()
+
+        InicializarDependencias()
+    End Sub
+
+    Private Sub InicializarDependencias()
+        myServicioLogin = New ServicioLogin(New UsuarioRepositorio())
+    End Sub
 
     Private Sub BtnIngresar_Click(sender As Object, e As EventArgs) Handles BtnIngresar.Click
         ControlBox = False
         If TxtUsuario.Text = Nothing Or TxtContraseña.Text = Nothing Then
             MessageBox.Show("Debe completar los campos Usuario y Contraseña", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
-            Dim ds As New DataSet
-            Dim con As New SqlConnection
-            Dim objcon As New conexion
-            Dim da As New SqlDataAdapter
-            Dim str As String
-            Try
-                con = objcon.abrir
-                str = "select * from login where Usuario = '" & TxtUsuario.Text & "' and Contrasena = '" & TxtContraseña.Text & "'"
-                da = New SqlDataAdapter(str, con)
-                da.Fill(ds, "consulta")
-            Catch ex As Exception
-                MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
-            End Try
-
-            If ds.Tables(0).Rows.Count = 0 Then
-                MessageBox.Show("Usuario y/o Contraseña Incorrectos." & vbCrLf & " Por favor intente de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Else
+            If myServicioLogin.EsUsuarioValido(TxtUsuario.Text, TxtContraseña.Text) Then
                 Me.Hide()
+            Else
+                MessageBox.Show("Usuario y/o Contraseña Incorrectos." & vbCrLf & " Por favor intente de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
         End If
     End Sub

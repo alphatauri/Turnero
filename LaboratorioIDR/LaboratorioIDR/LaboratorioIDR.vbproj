@@ -152,10 +152,10 @@
     <Compile Include="FormHorarios.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LogIn.Designer.vb">
-      <DependentUpon>LogIn.vb</DependentUpon>
+    <Compile Include="FormLogIn.Designer.vb">
+      <DependentUpon>FormLogIn.vb</DependentUpon>
     </Compile>
-    <Compile Include="LogIn.vb">
+    <Compile Include="FormLogIn.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MetodoLogIn.vb" />
@@ -183,6 +183,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Program.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AbmProfesionales.resx">
@@ -206,8 +207,8 @@
     <EmbeddedResource Include="FormHorarios.resx">
       <DependentUpon>FormHorarios.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LogIn.resx">
-      <DependentUpon>LogIn.vb</DependentUpon>
+    <EmbeddedResource Include="FormLogIn.resx">
+      <DependentUpon>FormLogIn.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -255,6 +256,20 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LaboratorioIDR.Datos\LaboratorioIDR.Datos.vbproj">
+      <Project>{84b74e3a-b396-47cb-85d0-9c57e56d2b1a}</Project>
+      <Name>LaboratorioIDR.Datos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LaboratorioIDR.Negocio\LaboratorioIDR.Negocio.vbproj">
+      <Project>{acccde06-4ca2-4b53-a6fe-db0463ea2fe9}</Project>
+      <Name>LaboratorioIDR.Negocio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LaboratorioIDR.PresentationLogic\LaboratorioIDR.PresentationLogic.vbproj">
+      <Project>{d2ad7f2d-3122-4e44-974d-b4ebc4603796}</Project>
+      <Name>LaboratorioIDR.PresentationLogic</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
