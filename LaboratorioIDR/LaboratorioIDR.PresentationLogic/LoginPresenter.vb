@@ -1,4 +1,6 @@
-﻿Public Class LoginPresenter
+﻿Imports LaboratorioIDR.Negocio
+
+Public Class LoginPresenter
 
     Public Sub New(
                   view As ILoginView,

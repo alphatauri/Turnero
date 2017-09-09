@@ -266,10 +266,6 @@
       <Project>{acccde06-4ca2-4b53-a6fe-db0463ea2fe9}</Project>
       <Name>LaboratorioIDR.Negocio</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LaboratorioIDR.PresentationLogic\LaboratorioIDR.PresentationLogic.vbproj">
-      <Project>{d2ad7f2d-3122-4e44-974d-b4ebc4603796}</Project>
-      <Name>LaboratorioIDR.PresentationLogic</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

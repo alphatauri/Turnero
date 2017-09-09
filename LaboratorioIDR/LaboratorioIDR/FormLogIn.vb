@@ -1,10 +1,8 @@
-﻿Imports System.Data.SqlClient
-Imports LaboratorioIDR.Datos
+﻿Imports LaboratorioIDR.Datos
 Imports LaboratorioIDR.Negocio
-Imports LaboratorioIDR.PresentationLogic
 
-Public Class FormLogIn : Implements ILoginView
-    Private myServicioLogin As ServicioLogin
+Public Class FormLogIn
+    Private myServicioLogin As LoginService
 
     Sub New()
         InitializeComponent()
@@ -13,7 +11,7 @@ Public Class FormLogIn : Implements ILoginView
     End Sub
 
     Private Sub InicializarDependencias()
-        myServicioLogin = New ServicioLogin(New UsuarioRepositorio())
+        myServicioLogin = New LoginService(New UsuarioRepositorio())
     End Sub
 
     Private Sub BtnIngresar_Click(sender As Object, e As EventArgs) Handles BtnIngresar.Click

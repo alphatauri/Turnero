@@ -100,5 +100,11 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LaboratorioIDR.Negocio\LaboratorioIDR.Negocio.vbproj">
+      <Project>{ACCCDE06-4CA2-4B53-A6FE-DB0463EA2FE9}</Project>
+      <Name>LaboratorioIDR.Negocio</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

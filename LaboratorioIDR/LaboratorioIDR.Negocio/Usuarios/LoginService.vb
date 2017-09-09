@@ -1,4 +1,4 @@
-﻿Public Class ServicioLogin
+﻿Public Class LoginService : Implements ILoginService
     Private repositorioUsuario As IRepositorioUsuario
 
     Sub New(repositorioUsuario As IRepositorioUsuario)
