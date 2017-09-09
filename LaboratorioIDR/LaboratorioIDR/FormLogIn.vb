@@ -36,18 +36,15 @@ Public Class FormLogIn
         FormMenu.Close()
         Close()
     End Sub
-    'Pasa de campos con la tecla enter sin sonido de fin de linea
-    Private Sub TxtUsuario_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtUsuario.KeyPress
-        If Asc(e.KeyChar) = 13 Then
-            e.Handled = True 'saca el sonido de fin de linea
-            TxtContraseña.Focus()
+    Private Function SiEsEnterTab(keychar As Char) As Boolean
+        If Asc(keychar) = 13 Then
+            SelectNextControl(ActiveControl, True, True, False, True)
+            Return True
         End If
-    End Sub
+        Return False
+    End Function
 
-    Private Sub TxtContraseña_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtContraseña.KeyPress
-        If Asc(e.KeyChar) = 13 Then
-            e.Handled = True
-            BtnIngresar.Focus()
-        End If
+    Private Sub TextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtUsuario.KeyPress, TxtContraseña.KeyPress
+        e.Handled = SiEsEnterTab(e.KeyChar)
     End Sub
 End Class
