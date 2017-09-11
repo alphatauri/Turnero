@@ -80,6 +80,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
@@ -112,10 +113,10 @@
     </Compile>
     <Compile Include="ClassLogIn.vb" />
     <Compile Include="ClassPacientes.vb" />
-    <Compile Include="Abm_Pacientes.vb">
+    <Compile Include="Pacientes\Abm_Pacientes.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm_Pacientes.Designer.vb">
+    <Compile Include="Pacientes\Abm_Pacientes.Designer.vb">
       <DependentUpon>Abm_Pacientes.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
@@ -183,13 +184,15 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Pacientes\Abm_Pacientes_Controlador.vb" />
     <Compile Include="Program.vb" />
+    <Compile Include="Tools.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AbmProfesionales.resx">
       <DependentUpon>AbmProfesionales.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Abm_Pacientes.resx">
+    <EmbeddedResource Include="Pacientes\Abm_Pacientes.resx">
       <DependentUpon>Abm_Pacientes.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormABMLogIn.resx">

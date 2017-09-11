@@ -59,7 +59,7 @@ Partial Class Pacientes
         '
         Me.LbDNI.AutoSize = True
         Me.LbDNI.ForeColor = System.Drawing.Color.Black
-        Me.LbDNI.Location = New System.Drawing.Point(10, 12)
+        Me.LbDNI.Location = New System.Drawing.Point(12, 9)
         Me.LbDNI.Name = "LbDNI"
         Me.LbDNI.Size = New System.Drawing.Size(26, 13)
         Me.LbDNI.TabIndex = 9
@@ -69,7 +69,7 @@ Partial Class Pacientes
         '
         Me.LbNombre.AutoSize = True
         Me.LbNombre.ForeColor = System.Drawing.Color.Black
-        Me.LbNombre.Location = New System.Drawing.Point(389, 44)
+        Me.LbNombre.Location = New System.Drawing.Point(389, 41)
         Me.LbNombre.Name = "LbNombre"
         Me.LbNombre.Size = New System.Drawing.Size(61, 13)
         Me.LbNombre.TabIndex = 12
@@ -79,7 +79,7 @@ Partial Class Pacientes
         '
         Me.LbApellido.AutoSize = True
         Me.LbApellido.ForeColor = System.Drawing.Color.Black
-        Me.LbApellido.Location = New System.Drawing.Point(10, 44)
+        Me.LbApellido.Location = New System.Drawing.Point(12, 41)
         Me.LbApellido.Name = "LbApellido"
         Me.LbApellido.Size = New System.Drawing.Size(59, 13)
         Me.LbApellido.TabIndex = 12
@@ -89,7 +89,7 @@ Partial Class Pacientes
         '
         Me.LbFechaNac.AutoSize = True
         Me.LbFechaNac.ForeColor = System.Drawing.Color.Black
-        Me.LbFechaNac.Location = New System.Drawing.Point(10, 72)
+        Me.LbFechaNac.Location = New System.Drawing.Point(12, 73)
         Me.LbFechaNac.Name = "LbFechaNac"
         Me.LbFechaNac.Size = New System.Drawing.Size(130, 13)
         Me.LbFechaNac.TabIndex = 15
@@ -99,7 +99,7 @@ Partial Class Pacientes
         '
         Me.LbGenero.AutoSize = True
         Me.LbGenero.ForeColor = System.Drawing.Color.Black
-        Me.LbGenero.Location = New System.Drawing.Point(10, 104)
+        Me.LbGenero.Location = New System.Drawing.Point(12, 105)
         Me.LbGenero.Name = "LbGenero"
         Me.LbGenero.Size = New System.Drawing.Size(36, 13)
         Me.LbGenero.TabIndex = 14
@@ -109,7 +109,7 @@ Partial Class Pacientes
         '
         Me.LbCalle.AutoSize = True
         Me.LbCalle.ForeColor = System.Drawing.Color.Black
-        Me.LbCalle.Location = New System.Drawing.Point(10, 140)
+        Me.LbCalle.Location = New System.Drawing.Point(12, 137)
         Me.LbCalle.Name = "LbCalle"
         Me.LbCalle.Size = New System.Drawing.Size(40, 13)
         Me.LbCalle.TabIndex = 15
@@ -119,7 +119,7 @@ Partial Class Pacientes
         '
         Me.LbAltura.AutoSize = True
         Me.LbAltura.ForeColor = System.Drawing.Color.Black
-        Me.LbAltura.Location = New System.Drawing.Point(394, 140)
+        Me.LbAltura.Location = New System.Drawing.Point(389, 137)
         Me.LbAltura.Name = "LbAltura"
         Me.LbAltura.Size = New System.Drawing.Size(55, 13)
         Me.LbAltura.TabIndex = 16
@@ -129,7 +129,7 @@ Partial Class Pacientes
         '
         Me.LbCiudad.AutoSize = True
         Me.LbCiudad.ForeColor = System.Drawing.Color.Black
-        Me.LbCiudad.Location = New System.Drawing.Point(10, 173)
+        Me.LbCiudad.Location = New System.Drawing.Point(12, 169)
         Me.LbCiudad.Name = "LbCiudad"
         Me.LbCiudad.Size = New System.Drawing.Size(48, 13)
         Me.LbCiudad.TabIndex = 17
@@ -139,7 +139,7 @@ Partial Class Pacientes
         '
         Me.LbTelefono.AutoSize = True
         Me.LbTelefono.ForeColor = System.Drawing.Color.Black
-        Me.LbTelefono.Location = New System.Drawing.Point(394, 173)
+        Me.LbTelefono.Location = New System.Drawing.Point(389, 169)
         Me.LbTelefono.Name = "LbTelefono"
         Me.LbTelefono.Size = New System.Drawing.Size(64, 13)
         Me.LbTelefono.TabIndex = 18
@@ -150,10 +150,10 @@ Partial Class Pacientes
         Me.BtnBuscarDNI.BackColor = System.Drawing.Color.LightSlateGray
         Me.BtnBuscarDNI.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnBuscarDNI.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.BtnBuscarDNI.Location = New System.Drawing.Point(386, 8)
+        Me.BtnBuscarDNI.Location = New System.Drawing.Point(392, 1)
         Me.BtnBuscarDNI.Name = "BtnBuscarDNI"
         Me.BtnBuscarDNI.Size = New System.Drawing.Size(125, 28)
-        Me.BtnBuscarDNI.TabIndex = 11
+        Me.BtnBuscarDNI.TabIndex = 1
         Me.BtnBuscarDNI.Text = "Buscar por DNI"
         Me.BtnBuscarDNI.UseVisualStyleBackColor = False
         '
@@ -163,14 +163,14 @@ Partial Class Pacientes
         Me.BtnAgregar.Location = New System.Drawing.Point(16, 19)
         Me.BtnAgregar.Name = "BtnAgregar"
         Me.BtnAgregar.Size = New System.Drawing.Size(75, 23)
-        Me.BtnAgregar.TabIndex = 1
+        Me.BtnAgregar.TabIndex = 11
         Me.BtnAgregar.Text = "Agregar"
         Me.BtnAgregar.UseVisualStyleBackColor = True
         '
         'BtnModificar
         '
         Me.BtnModificar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.BtnModificar.Location = New System.Drawing.Point(125, 19)
+        Me.BtnModificar.Location = New System.Drawing.Point(116, 19)
         Me.BtnModificar.Name = "BtnModificar"
         Me.BtnModificar.Size = New System.Drawing.Size(75, 23)
         Me.BtnModificar.TabIndex = 12
@@ -180,7 +180,7 @@ Partial Class Pacientes
         'BtnEliminar
         '
         Me.BtnEliminar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.BtnEliminar.Location = New System.Drawing.Point(234, 19)
+        Me.BtnEliminar.Location = New System.Drawing.Point(216, 19)
         Me.BtnEliminar.Name = "BtnEliminar"
         Me.BtnEliminar.Size = New System.Drawing.Size(75, 23)
         Me.BtnEliminar.TabIndex = 13
@@ -190,7 +190,7 @@ Partial Class Pacientes
         'TxtDNI
         '
         Me.TxtDNI.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.TxtDNI.Location = New System.Drawing.Point(146, 12)
+        Me.TxtDNI.Location = New System.Drawing.Point(146, 6)
         Me.TxtDNI.MaxLength = 8
         Me.TxtDNI.Name = "TxtDNI"
         Me.TxtDNI.Size = New System.Drawing.Size(221, 20)
@@ -198,69 +198,71 @@ Partial Class Pacientes
         '
         'TxtNombre
         '
-        Me.TxtNombre.Location = New System.Drawing.Point(464, 41)
+        Me.TxtNombre.Location = New System.Drawing.Point(464, 38)
         Me.TxtNombre.MaxLength = 20
         Me.TxtNombre.Name = "TxtNombre"
         Me.TxtNombre.Size = New System.Drawing.Size(234, 20)
-        Me.TxtNombre.TabIndex = 2
+        Me.TxtNombre.TabIndex = 3
         '
         'TxtApellido
         '
-        Me.TxtApellido.Location = New System.Drawing.Point(146, 41)
+        Me.TxtApellido.Location = New System.Drawing.Point(146, 38)
         Me.TxtApellido.MaxLength = 15
         Me.TxtApellido.Name = "TxtApellido"
         Me.TxtApellido.Size = New System.Drawing.Size(221, 20)
-        Me.TxtApellido.TabIndex = 1
+        Me.TxtApellido.TabIndex = 2
         '
         'TxtCalle
         '
-        Me.TxtCalle.Location = New System.Drawing.Point(146, 137)
+        Me.TxtCalle.Location = New System.Drawing.Point(146, 134)
         Me.TxtCalle.MaxLength = 20
         Me.TxtCalle.Name = "TxtCalle"
         Me.TxtCalle.Size = New System.Drawing.Size(221, 20)
-        Me.TxtCalle.TabIndex = 5
+        Me.TxtCalle.TabIndex = 6
         '
         'TxtAltura
         '
-        Me.TxtAltura.Location = New System.Drawing.Point(458, 137)
+        Me.TxtAltura.Location = New System.Drawing.Point(464, 134)
         Me.TxtAltura.MaxLength = 5
         Me.TxtAltura.Name = "TxtAltura"
         Me.TxtAltura.Size = New System.Drawing.Size(53, 20)
-        Me.TxtAltura.TabIndex = 6
+        Me.TxtAltura.TabIndex = 7
         '
         'TxtCiudad
         '
-        Me.TxtCiudad.Location = New System.Drawing.Point(146, 170)
+        Me.TxtCiudad.Location = New System.Drawing.Point(146, 166)
         Me.TxtCiudad.MaxLength = 20
         Me.TxtCiudad.Name = "TxtCiudad"
         Me.TxtCiudad.Size = New System.Drawing.Size(221, 20)
-        Me.TxtCiudad.TabIndex = 7
+        Me.TxtCiudad.TabIndex = 8
         '
         'TxtTelefono
         '
-        Me.TxtTelefono.Location = New System.Drawing.Point(534, 170)
+        Me.TxtTelefono.Location = New System.Drawing.Point(549, 166)
         Me.TxtTelefono.MaxLength = 9
         Me.TxtTelefono.Name = "TxtTelefono"
         Me.TxtTelefono.Size = New System.Drawing.Size(100, 20)
-        Me.TxtTelefono.TabIndex = 9
+        Me.TxtTelefono.TabIndex = 10
         '
         'DGVPacientes
         '
+        Me.DGVPacientes.AllowUserToAddRows = False
+        Me.DGVPacientes.AllowUserToDeleteRows = False
         Me.DGVPacientes.BackgroundColor = System.Drawing.SystemColors.ActiveCaption
         Me.DGVPacientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVPacientes.Location = New System.Drawing.Point(30, 267)
         Me.DGVPacientes.Name = "DGVPacientes"
         Me.DGVPacientes.Size = New System.Drawing.Size(660, 188)
-        Me.DGVPacientes.TabIndex = 12
+        Me.DGVPacientes.TabIndex = 16
         '
         'DTPFechaNac
         '
-        Me.DTPFechaNac.Location = New System.Drawing.Point(146, 66)
-        Me.DTPFechaNac.MaxDate = New Date(2017, 7, 25, 23, 59, 59, 0)
+        Me.DTPFechaNac.Location = New System.Drawing.Point(146, 67)
         Me.DTPFechaNac.MinDate = New Date(1900, 1, 1, 0, 0, 0, 0)
         Me.DTPFechaNac.Name = "DTPFechaNac"
         Me.DTPFechaNac.Size = New System.Drawing.Size(221, 20)
-        Me.DTPFechaNac.TabIndex = 3
+        Me.DTPFechaNac.TabIndex = 4
+        Me.DTPFechaNac.Value = New Date(2017, 7, 25, 23, 59, 59, 0)
         '
         'BtnSalir
         '
@@ -269,7 +271,7 @@ Partial Class Pacientes
         Me.BtnSalir.Location = New System.Drawing.Point(569, 19)
         Me.BtnSalir.Name = "BtnSalir"
         Me.BtnSalir.Size = New System.Drawing.Size(75, 23)
-        Me.BtnSalir.TabIndex = 25
+        Me.BtnSalir.TabIndex = 15
         Me.BtnSalir.Text = "Salir"
         Me.BtnSalir.UseVisualStyleBackColor = True
         '
@@ -279,17 +281,17 @@ Partial Class Pacientes
         Me.BtnLimpiarCampos.Location = New System.Drawing.Point(461, 19)
         Me.BtnLimpiarCampos.Name = "BtnLimpiarCampos"
         Me.BtnLimpiarCampos.Size = New System.Drawing.Size(89, 23)
-        Me.BtnLimpiarCampos.TabIndex = 4
+        Me.BtnLimpiarCampos.TabIndex = 14
         Me.BtnLimpiarCampos.Text = "Limpiar Campos"
         Me.BtnLimpiarCampos.UseVisualStyleBackColor = True
         '
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.BtnAgregar)
-        Me.GroupBox1.Controls.Add(Me.BtnLimpiarCampos)
         Me.GroupBox1.Controls.Add(Me.BtnModificar)
-        Me.GroupBox1.Controls.Add(Me.BtnSalir)
         Me.GroupBox1.Controls.Add(Me.BtnEliminar)
+        Me.GroupBox1.Controls.Add(Me.BtnLimpiarCampos)
+        Me.GroupBox1.Controls.Add(Me.BtnSalir)
         Me.GroupBox1.ForeColor = System.Drawing.Color.Black
         Me.GroupBox1.Location = New System.Drawing.Point(30, 196)
         Me.GroupBox1.Name = "GroupBox1"
@@ -302,7 +304,7 @@ Partial Class Pacientes
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(511, 164)
+        Me.Label1.Location = New System.Drawing.Point(523, 160)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(20, 25)
         Me.Label1.TabIndex = 29
@@ -312,17 +314,17 @@ Partial Class Pacientes
         '
         Me.ComboBoxGenero.FormattingEnabled = True
         Me.ComboBoxGenero.Items.AddRange(New Object() {"Masculino", "Femenino", "Indefinido"})
-        Me.ComboBoxGenero.Location = New System.Drawing.Point(146, 101)
+        Me.ComboBoxGenero.Location = New System.Drawing.Point(146, 102)
         Me.ComboBoxGenero.Name = "ComboBoxGenero"
         Me.ComboBoxGenero.Size = New System.Drawing.Size(221, 21)
-        Me.ComboBoxGenero.TabIndex = 4
+        Me.ComboBoxGenero.TabIndex = 5
         '
         'TxtPreFijoPac
         '
-        Me.TxtPreFijoPac.Location = New System.Drawing.Point(458, 169)
+        Me.TxtPreFijoPac.Location = New System.Drawing.Point(464, 166)
         Me.TxtPreFijoPac.Name = "TxtPreFijoPac"
         Me.TxtPreFijoPac.Size = New System.Drawing.Size(53, 20)
-        Me.TxtPreFijoPac.TabIndex = 8
+        Me.TxtPreFijoPac.TabIndex = 9
         '
         'Pacientes
         '
@@ -330,20 +332,20 @@ Partial Class Pacientes
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.DarkGray
         Me.ClientSize = New System.Drawing.Size(724, 465)
-        Me.Controls.Add(Me.TxtPreFijoPac)
-        Me.Controls.Add(Me.ComboBoxGenero)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.DTPFechaNac)
-        Me.Controls.Add(Me.DGVPacientes)
-        Me.Controls.Add(Me.TxtTelefono)
-        Me.Controls.Add(Me.TxtCiudad)
-        Me.Controls.Add(Me.TxtAltura)
-        Me.Controls.Add(Me.TxtCalle)
-        Me.Controls.Add(Me.TxtApellido)
-        Me.Controls.Add(Me.TxtNombre)
         Me.Controls.Add(Me.TxtDNI)
         Me.Controls.Add(Me.BtnBuscarDNI)
+        Me.Controls.Add(Me.TxtApellido)
+        Me.Controls.Add(Me.TxtNombre)
+        Me.Controls.Add(Me.DTPFechaNac)
+        Me.Controls.Add(Me.ComboBoxGenero)
+        Me.Controls.Add(Me.TxtCalle)
+        Me.Controls.Add(Me.TxtAltura)
+        Me.Controls.Add(Me.TxtCiudad)
+        Me.Controls.Add(Me.TxtPreFijoPac)
+        Me.Controls.Add(Me.TxtTelefono)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.DGVPacientes)
         Me.Controls.Add(Me.LbTelefono)
         Me.Controls.Add(Me.LbCiudad)
         Me.Controls.Add(Me.LbAltura)

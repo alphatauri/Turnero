@@ -36,13 +36,6 @@ Public Class FormLogIn
         FormMenu.Close()
         Close()
     End Sub
-    Private Function SiEsEnterTab(keychar As Char) As Boolean
-        If Asc(keychar) = 13 Then
-            SelectNextControl(ActiveControl, True, True, False, True)
-            Return True
-        End If
-        Return False
-    End Function
 
     Private Sub TextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtUsuario.KeyPress, TxtContraseña.KeyPress
         e.Handled = SiEsEnterTab(e.KeyChar)

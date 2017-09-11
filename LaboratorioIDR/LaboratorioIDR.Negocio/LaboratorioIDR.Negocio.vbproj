@@ -81,6 +81,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Pacientes\IRepositorioPacientes.vb" />
+    <Compile Include="Pacientes\IServicioPacientes.vb" />
+    <Compile Include="Pacientes\Paciente.vb" />
+    <Compile Include="Pacientes\ServicioPacientes.vb" />
     <Compile Include="Usuarios\ILoginService.vb" />
     <Compile Include="Usuarios\LoginService.vb" />
     <Compile Include="Usuarios\IRepositorioUsuario.vb" />
