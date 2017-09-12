@@ -1,4 +1,6 @@
-﻿Public Class ServicioPacientes : Implements IServicioPacientes
+﻿Imports LaboratorioIDR.Negocio
+
+Public Class ServicioPacientes : Implements IServicioPacientes
 
     Private ReadOnly repositorioPacientes As IRepositorioPacientes
 
@@ -6,7 +8,15 @@
         Me.repositorioPacientes = repositorioPacientes
     End Sub
 
+    Public Sub AgregarPaciente(p As Paciente) Implements IServicioPacientes.AgregarPaciente
+        Me.repositorioPacientes.Insertar(p)
+    End Sub
+
+    Public Sub ModificarPaciente(p As Paciente) Implements IServicioPacientes.ModificarPaciente
+        Me.repositorioPacientes.Actualizar(p)
+    End Sub
+
     Public Function EncontarPacientePorDni(dni As String) As Paciente Implements IServicioPacientes.EncontarPacientePorDni
-        Throw New NotImplementedException()
+        Return Me.repositorioPacientes.EncontrarPorDni(dni)
     End Function
 End Class

@@ -17,12 +17,9 @@ Public Class Pacientes
         controlador.Inicializar()
     End Sub
 
-    Friend Sub inhabilitarAccionEliminar()
-        BtnEliminar.Enabled = False
-    End Sub
-
-    Friend Sub inhabilitarAccionEditar()
+    Friend Sub inhabilitarAccionEditarEliminar()
         BtnModificar.Enabled = False
+        BtnEliminar.Enabled = False
     End Sub
 
     Friend Sub habilitarAccionAgregar()
@@ -46,12 +43,9 @@ Public Class Pacientes
         TxtDNI.Text = pacienteActual.Dni
     End Sub
 
-    Friend Sub habilitarAccionEliminar()
-        BtnEliminar.Enabled = True
-    End Sub
-
-    Friend Sub habilitarAccionEditar()
+    Friend Sub habilitarAccionEditarEliminar()
         BtnModificar.Enabled = True
+        BtnEliminar.Enabled = True
     End Sub
 
     Friend Sub habilitar_Campos()
@@ -66,7 +60,7 @@ Public Class Pacientes
         TxtTelefono.Enabled = True
     End Sub
 
-    Friend Sub habilitarAcciones()
+    Friend Sub habilitarAccionesAceptarCancelar()
         BtnAgregar.Enabled = True
         BtnAgregar.Text = "Aceptar"
         BtnModificar.Enabled = True
@@ -90,6 +84,17 @@ Public Class Pacientes
         TxtCiudad.Enabled = False
         TxtPreFijoPac.Enabled = False
         TxtTelefono.Enabled = False
+    End Sub
+
+    Friend Sub inhabilitarAccionesAceptarCancelar()
+        BtnAgregar.Enabled = False
+        BtnAgregar.Text = "Agregar"
+        BtnModificar.Enabled = False
+        BtnModificar.Text = "Modificar"
+        BtnEliminar.Enabled = False
+        BtnLimpiarCampos.Enabled = True
+        BtnSalir.Enabled = True
+        BtnBuscarDNI.Enabled = True
     End Sub
 
     Friend Sub limpiar_Campos()

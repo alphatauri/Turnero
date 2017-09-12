@@ -29,18 +29,16 @@ Public Class Abm_Pacientes_Controlador
                 form.inhabilitar_Campos()
                 form.mostrar_Paciente(pacienteActual)
                 form.habilitarAccionAgregar()
-                form.habilitarAccionEditar()
-                form.habilitarAccionEliminar()
+                form.habilitarAccionEditarEliminar()
             Case Estados.Navegacion
                 form.inhabilitar_Campos()
                 form.limpiar_Campos()
                 form.habilitarAccionAgregar()
-                form.inhabilitarAccionEditar()
-                form.inhabilitarAccionEliminar()
+                form.inhabilitarAccionEditarEliminar()
             Case Estados.Edicion
                 If (estadoActual = Estados.Consulta) Then
                     form.habilitar_Campos()
-                    form.habilitarAcciones()
+                    form.habilitarAccionesAceptarCancelar()
                 Else
                     form.mostrarMensajeOk("Acción no permitida")
                     Return
@@ -48,7 +46,7 @@ Public Class Abm_Pacientes_Controlador
             Case Estados.Nuevo
                 form.limpiar_Campos()
                 form.habilitar_Campos()
-                form.habilitarAcciones()
+                form.habilitarAccionesAceptarCancelar()
         End Select
         estadoActual = estado
 
@@ -80,6 +78,7 @@ Public Class Abm_Pacientes_Controlador
         Else
             servicioPacientes.ModificarPaciente(p)
         End If
+        form.inhabilitarAccionesAceptarCancelar()
         form.mostrarMensajeOk("Los datos del paciente se han guardado")
         SetEstado(Estados.Navegacion)
     End Sub
