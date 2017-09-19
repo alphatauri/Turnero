@@ -16,6 +16,10 @@ Public Class ServicioPacientes : Implements IServicioPacientes
         Me.repositorioPacientes.Actualizar(p)
     End Sub
 
+    Public Sub EliminarPaciente(p As Paciente) Implements IServicioPacientes.EliminarPaciente
+        Me.repositorioPacientes.Eliminar(p)
+    End Sub
+
     Public Function EncontarPacientePorDni(dni As String) As Paciente Implements IServicioPacientes.EncontarPacientePorDni
         Return Me.repositorioPacientes.EncontrarPorDni(dni)
     End Function

@@ -8,5 +8,5 @@
     Public Property DomicilioCiudad As String
     Public Property TelefonoPrefijo As Integer
     Public Property TelefonoNumero As Integer
-    Public Property Dni As ULong
+    Public Property Dni As Decimal
 End Class

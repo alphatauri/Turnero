@@ -52,6 +52,22 @@ Public Class RepositorioPacientes : Implements IRepositorioPacientes
         End Using
     End Sub
 
+    Public Sub Eliminar(p As Paciente) Implements IRepositorioPacientes.Eliminar
+        Using con = Conexion.GetConnection()
+            Using qr = con.CreateCommand
+                qr.CommandType = CommandType.Text
+                qr.CommandText = "delete from Pacientes where DNIPac = @dni"
+                qr.Parameters.Add(New SqlClient.SqlParameter("@dni", p.Dni))
+                Try
+                    con.Open()
+                    qr.ExecuteNonQuery()
+                Catch ex As Exception
+                    Throw New ProblemaTecnicoException("Ha ocurrido un error al eliminar un paciente", ex)
+                End Try
+            End Using
+        End Using
+    End Sub
+
     Public Function EncontrarPorDni(dni As String) As Paciente Implements IRepositorioPacientes.EncontrarPorDni
         Dim paciente As Paciente = Nothing
         Using con = Conexion.GetConnection()

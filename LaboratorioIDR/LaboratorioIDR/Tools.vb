@@ -20,4 +20,8 @@ Public Module Tools
     Public Function EsNumero(keychar As Char) As Boolean
         Return Char.IsNumber(keychar)
     End Function
+
+    Public Function EsControl(keychar As Char) As Boolean
+        Return Char.IsControl(keychar)
+    End Function
 End Module

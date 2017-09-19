@@ -189,7 +189,7 @@ Partial Class Pacientes
         '
         'TxtDNI
         '
-        Me.TxtDNI.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.TxtDNI.BackColor = System.Drawing.SystemColors.Window
         Me.TxtDNI.Location = New System.Drawing.Point(146, 6)
         Me.TxtDNI.MaxLength = 8
         Me.TxtDNI.Name = "TxtDNI"

@@ -27,7 +27,7 @@ Public Class Pacientes
     End Sub
 
     Friend Sub mostrarMensajeOk(mensaje As String)
-        MessageBox.Show(mensaje)
+        MessageBox.Show(Me, mensaje, "Mensaje")
     End Sub
 
     Friend Sub mostrar_Paciente(pacienteActual As Paciente)
@@ -69,8 +69,6 @@ Public Class Pacientes
         BtnLimpiarCampos.Enabled = False
         BtnSalir.Enabled = True
         BtnBuscarDNI.Enabled = False
-
-        TxtDNI.Focus()
     End Sub
 
     Friend Sub inhabilitar_Campos()
@@ -97,6 +95,10 @@ Public Class Pacientes
         BtnBuscarDNI.Enabled = True
     End Sub
 
+    Friend Function mostrarMensajeSiNo(v As String) As Boolean
+        Return MessageBox.Show(Me, v, "Si / No", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) = DialogResult.Yes
+    End Function
+
     Friend Sub limpiar_Campos()
         TxtDNI.Text = Nothing
         TxtNombre.Text = Nothing
@@ -108,6 +110,8 @@ Public Class Pacientes
         TxtCiudad.Text = Nothing
         TxtPreFijoPac.Text = Nothing
         TxtTelefono.Text = Nothing
+
+        TxtDNI.Focus()
     End Sub
 
     Private Sub BtnSalir_Click(sender As Object, e As EventArgs) Handles BtnSalir.Click
@@ -123,7 +127,7 @@ Public Class Pacientes
     End Sub
 
     Private Sub CampoSoloLetras_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtNombre.KeyPress, TxtApellido.KeyPress, ComboBoxGenero.KeyPress, TxtCalle.KeyPress, TxtCiudad.KeyPress
-        If EsLetra(e.KeyChar) Or EsEspacio(e.KeyChar) Then
+        If EsLetra(e.KeyChar) Or EsEspacio(e.KeyChar) Or EsControl(e.KeyChar) Then
             e.Handled = False
         Else
             SiEsEnterTab(e.KeyChar)
@@ -150,6 +154,39 @@ Public Class Pacientes
     End Sub
 
     Private Function cargarPaciente() As Paciente
-        Throw New NotImplementedException()
+        Dim p = New Paciente()
+        p.Nombre = Capitalizar(TxtNombre.Text)
+        p.Apellido = Capitalizar(TxtApellido.Text)
+        p.Dni = TxtDNI.Text
+        p.DomicilioCalle = Capitalizar(TxtCalle.Text)
+        p.DomicilioCiudad = Capitalizar(TxtCiudad.Text)
+        p.DomicilioNumero = TxtDNI.Text
+        p.Genero = Capitalizar(ComboBoxGenero.Text)
+        p.Nacimiento = DTPFechaNac.Value
+        p.TelefonoNumero = TxtTelefono.Text
+        p.TelefonoPrefijo = TxtPreFijoPac.Text
+
+        Return p
     End Function
+
+    Private Function Capitalizar(text As String) As String
+        Dim palabras = text.Split(New Char() {" "c}, StringSplitOptions.RemoveEmptyEntries)
+        For i As Integer = 0 To palabras.Count() - 1
+            palabras(i) = StrConv(palabras(i), VbStrConv.ProperCase)
+        Next
+        Return String.Join(" ", palabras)
+    End Function
+
+    Private Sub BtnLimpiarCampos_Click(sender As Object, e As EventArgs) Handles BtnLimpiarCampos.Click
+        controlador.CommandoLimpiarCampos()
+    End Sub
+
+    Private Sub BtnModificar_Click(sender As Object, e As EventArgs) Handles BtnModificar.Click
+        controlador.CommandoModificar()
+    End Sub
+
+    Private Sub BtnEliminar_Click(sender As Object, e As EventArgs) Handles BtnEliminar.Click
+        Dim paciente = cargarPaciente()
+        controlador.commandoEliminar(paciente)
+    End Sub
 End Class

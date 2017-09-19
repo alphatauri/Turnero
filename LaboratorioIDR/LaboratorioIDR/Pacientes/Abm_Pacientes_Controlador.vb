@@ -82,4 +82,20 @@ Public Class Abm_Pacientes_Controlador
         form.mostrarMensajeOk("Los datos del paciente se han guardado")
         SetEstado(Estados.Navegacion)
     End Sub
+
+    Friend Sub CommandoLimpiarCampos()
+        SetEstado(Estados.Navegacion)
+    End Sub
+
+    Friend Sub CommandoModificar()
+        SetEstado(Estados.Edicion)
+    End Sub
+
+    Friend Sub CommandoEliminar(p As Paciente)
+        If form.mostrarMensajeSiNo("¿Desea eliminar este paciente?") Then
+            servicioPacientes.EliminarPaciente(p)
+            SetEstado(Estados.Navegacion)
+            form.mostrarMensajeOk("El paciente se ha eliminado correctamente")
+        End If
+    End Sub
 End Class
