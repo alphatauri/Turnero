@@ -99,4 +99,35 @@ Public Class RepositorioPacientes : Implements IRepositorioPacientes
         End Using
         Return paciente
     End Function
+
+    Public Function ListarPacientes() As Object Implements IRepositorioPacientes.ListarPacientes
+        Dim lista = New List(Of Paciente)
+        Using con = Conexion.GetConnection()
+            Using qr = con.CreateCommand
+                qr.CommandType = CommandType.Text
+                qr.CommandText = "select DNIPac, NomPac, ApePac, FecNacPac, CallePac, AlturaPac, GeneroPac, CiudadPac, CarTelPac, TelPac from Pacientes"
+                Try
+                    con.Open()
+                    Dim reader = qr.ExecuteReader()
+                    While (reader.HasRows AndAlso reader.Read())
+                        lista.Add(New Paciente With {
+                            .Dni = Int(reader.GetDecimal(0)),
+                            .Nombre = reader.GetString(1),
+                            .Apellido = reader.GetString(2),
+                            .Nacimiento = reader.GetDateTime(3),
+                            .DomicilioCalle = reader.GetString(4),
+                            .DomicilioNumero = Int(reader.GetDecimal(5)),
+                            .Genero = reader.GetString(6),
+                            .DomicilioCiudad = If(reader.IsDBNull(7), Nothing, reader.GetString(7)),
+                            .TelefonoPrefijo = Int(reader.GetDecimal(8)),
+                            .TelefonoNumero = Int(reader.GetDecimal(9))
+                        })
+                    End While
+                Catch ex As Exception
+                    Throw New ProblemaTecnicoException("Ha ocurrido un error al actualizar un paciente", ex)
+                End Try
+            End Using
+        End Using
+        Return lista
+    End Function
 End Class

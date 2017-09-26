@@ -35,8 +35,13 @@ Public Class Abm_Pacientes_Controlador
                 form.limpiar_Campos()
                 form.habilitarAccionAgregar()
                 form.inhabilitarAccionEditarEliminar()
+
+                Dim pacientes = servicioPacientes.ListarTodos()
+                form.mostrarListaPacientes(pacientes)
             Case Estados.Edicion
                 If (estadoActual = Estados.Consulta) Then
+                    form.inhabilitar_CampoDNI()
+                    form.mostrar_Paciente(pacienteActual) 'por si modificó el campo dni antes de editar
                     form.habilitar_Campos()
                     form.habilitarAccionesAceptarCancelar()
                 Else
@@ -83,8 +88,12 @@ Public Class Abm_Pacientes_Controlador
         SetEstado(Estados.Navegacion)
     End Sub
 
-    Friend Sub CommandoLimpiarCampos()
-        SetEstado(Estados.Navegacion)
+    Friend Sub CommandoCancelar()
+        If estadoActual = Estados.Nuevo Then
+            SetEstado(Estados.Navegacion)
+        Else
+            SetEstado(Estados.Consulta)
+        End If
     End Sub
 
     Friend Sub CommandoModificar()
@@ -97,5 +106,10 @@ Public Class Abm_Pacientes_Controlador
             SetEstado(Estados.Navegacion)
             form.mostrarMensajeOk("El paciente se ha eliminado correctamente")
         End If
+    End Sub
+
+    Friend Sub SetPacienteActual(current As Paciente)
+        pacienteActual = current
+        SetEstado(Estados.Consulta)
     End Sub
 End Class

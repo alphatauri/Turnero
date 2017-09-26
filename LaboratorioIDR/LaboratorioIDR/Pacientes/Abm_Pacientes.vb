@@ -4,6 +4,7 @@ Imports LaboratorioIDR.Negocio
 
 Public Class Pacientes
     Private ReadOnly controlador As Abm_Pacientes_Controlador
+    Private ReadOnly dbPacientes As New BindingSource()
 
     Public Sub New()
         InitializeComponent()
@@ -23,6 +24,7 @@ Public Class Pacientes
     End Sub
 
     Friend Sub habilitarAccionAgregar()
+        BtnAgregar.Text = "Agregar"
         BtnAgregar.Enabled = True
     End Sub
 
@@ -43,7 +45,27 @@ Public Class Pacientes
         TxtDNI.Text = pacienteActual.Dni
     End Sub
 
+    Friend Sub mostrarListaPacientes(pacientes As List(Of Paciente))
+        dbPacientes.DataSource = pacientes
+        DGVPacientes.DataSource = dbPacientes
+        dbPacientes.ResetBindings(False)
+
+        Dim nombres = New List(Of String) From {"Column1", "Column2", "Column3"}
+
+        Dim columnas = DGVPacientes.Columns.GetColumnCount(DataGridViewElementStates.None) - 1
+        For index = columnas To 0 Step -1
+            If (Not nombres.Contains(DGVPacientes.Columns.Item(index).Name)) Then
+                DGVPacientes.Columns.RemoveAt(index)
+            End If
+        Next
+    End Sub
+
+    Friend Sub inhabilitar_CampoDNI()
+        TxtDNI.Enabled = False
+    End Sub
+
     Friend Sub habilitarAccionEditarEliminar()
+        BtnModificar.Text = "Modificar"
         BtnModificar.Enabled = True
         BtnEliminar.Enabled = True
     End Sub
@@ -58,6 +80,7 @@ Public Class Pacientes
         TxtCiudad.Enabled = True
         TxtPreFijoPac.Enabled = True
         TxtTelefono.Enabled = True
+        DGVPacientes.Enabled = False
     End Sub
 
     Friend Sub habilitarAccionesAceptarCancelar()
@@ -72,6 +95,7 @@ Public Class Pacientes
     End Sub
 
     Friend Sub inhabilitar_Campos()
+        TxtDNI.Enabled = True
         ComboBoxGenero.SelectedIndex = 0
         TxtApellido.Enabled = False
         TxtNombre.Enabled = False
@@ -82,6 +106,7 @@ Public Class Pacientes
         TxtCiudad.Enabled = False
         TxtPreFijoPac.Enabled = False
         TxtTelefono.Enabled = False
+        DGVPacientes.Enabled = True
     End Sub
 
     Friend Sub inhabilitarAccionesAceptarCancelar()
@@ -149,24 +174,32 @@ Public Class Pacientes
             controlador.CommandoAgregar()
         Else
             Dim paciente = cargarPaciente()
+            If paciente Is Nothing Then
+                Return
+            End If
             controlador.CommandoGuardar(paciente)
         End If
     End Sub
 
     Private Function cargarPaciente() As Paciente
-        Dim p = New Paciente()
-        p.Nombre = Capitalizar(TxtNombre.Text)
-        p.Apellido = Capitalizar(TxtApellido.Text)
-        p.Dni = TxtDNI.Text
-        p.DomicilioCalle = Capitalizar(TxtCalle.Text)
-        p.DomicilioCiudad = Capitalizar(TxtCiudad.Text)
-        p.DomicilioNumero = TxtDNI.Text
-        p.Genero = Capitalizar(ComboBoxGenero.Text)
-        p.Nacimiento = DTPFechaNac.Value
-        p.TelefonoNumero = TxtTelefono.Text
-        p.TelefonoPrefijo = TxtPreFijoPac.Text
+        Try
 
-        Return p
+            Dim p = New Paciente()
+            p.Nombre = Capitalizar(TxtNombre.Text)
+            p.Apellido = Capitalizar(TxtApellido.Text)
+            p.Dni = TxtDNI.Text
+            p.DomicilioCalle = Capitalizar(TxtCalle.Text)
+            p.DomicilioCiudad = Capitalizar(TxtCiudad.Text)
+            p.DomicilioNumero = TxtDNI.Text
+            p.Genero = Capitalizar(ComboBoxGenero.Text)
+            p.Nacimiento = DTPFechaNac.Value
+            p.TelefonoNumero = TxtTelefono.Text
+            p.TelefonoPrefijo = TxtPreFijoPac.Text
+
+            Return p
+        Catch ex As Exception
+            mostrarMensajeOk("Se produjo un error al intentar leer los datos del paciente")
+        End Try
     End Function
 
     Private Function Capitalizar(text As String) As String
@@ -178,15 +211,29 @@ Public Class Pacientes
     End Function
 
     Private Sub BtnLimpiarCampos_Click(sender As Object, e As EventArgs) Handles BtnLimpiarCampos.Click
-        controlador.CommandoLimpiarCampos()
+        controlador.CommandoCancelar()
     End Sub
 
     Private Sub BtnModificar_Click(sender As Object, e As EventArgs) Handles BtnModificar.Click
-        controlador.CommandoModificar()
+        If BtnModificar.Text = "Modificar" Then
+            controlador.CommandoModificar()
+        Else
+            controlador.CommandoCancelar()
+        End If
     End Sub
 
     Private Sub BtnEliminar_Click(sender As Object, e As EventArgs) Handles BtnEliminar.Click
         Dim paciente = cargarPaciente()
+        If paciente Is Nothing Then
+            Return
+        End If
         controlador.commandoEliminar(paciente)
+    End Sub
+
+    Private Sub DGVPacientes_CellMouseDoubleClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGVPacientes.CellMouseDoubleClick
+        If dbPacientes.Count < 1 Then
+            Return
+        End If
+        controlador.SetPacienteActual(dbPacientes.Current)
     End Sub
 End Class

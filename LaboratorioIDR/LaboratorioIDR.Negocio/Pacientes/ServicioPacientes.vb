@@ -23,4 +23,8 @@ Public Class ServicioPacientes : Implements IServicioPacientes
     Public Function EncontarPacientePorDni(dni As String) As Paciente Implements IServicioPacientes.EncontarPacientePorDni
         Return Me.repositorioPacientes.EncontrarPorDni(dni)
     End Function
+
+    Public Function ListarTodos() As Object Implements IServicioPacientes.ListarTodos
+        Return Me.repositorioPacientes.ListarPacientes()
+    End Function
 End Class

@@ -32,10 +32,10 @@ Public Class MetodoHorarios
         Try
             da = New SqlDataAdapter("SELECT DNIProf, ApeProf FROM profesionales", con)
             da.Fill(dt)
-            With FormHorarios.CBProf
-                FormHorarios.CBProf.DataSource = dt
-                FormHorarios.CBProf.DisplayMember = "ApeProf"
-                FormHorarios.CBProf.ValueMember = "DNIProf"
+            With cb
+                .DisplayMember = "ApeProf"
+                .ValueMember = "DNIProf"
+                .DataSource = dt
             End With
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")

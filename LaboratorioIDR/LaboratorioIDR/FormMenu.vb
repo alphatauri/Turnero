@@ -4,6 +4,7 @@
     End Sub
     Private Sub PacientesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PacientesToolStripMenuItem.Click
         Pacientes.ShowDialog()
+        Pacientes.Close()
     End Sub
     Private Sub SalirToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalirToolStripMenuItem.Click
         Close()
@@ -17,6 +18,7 @@
 
     Private Sub AgendasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AgendasToolStripMenuItem.Click
         FormHorarios.ShowDialog()
+        FormHorarios.Close()
     End Sub
 
     Private Sub GESTIONDEUSUARIOSToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GESTIONDEUSUARIOSToolStripMenuItem.Click

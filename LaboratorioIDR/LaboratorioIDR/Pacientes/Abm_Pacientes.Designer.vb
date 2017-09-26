@@ -44,6 +44,9 @@ Partial Class Pacientes
         Me.TxtCiudad = New System.Windows.Forms.TextBox()
         Me.TxtTelefono = New System.Windows.Forms.TextBox()
         Me.DGVPacientes = New System.Windows.Forms.DataGridView()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DTPFechaNac = New System.Windows.Forms.DateTimePicker()
         Me.BtnSalir = New System.Windows.Forms.Button()
         Me.BtnLimpiarCampos = New System.Windows.Forms.Button()
@@ -248,12 +251,39 @@ Partial Class Pacientes
         '
         Me.DGVPacientes.AllowUserToAddRows = False
         Me.DGVPacientes.AllowUserToDeleteRows = False
+        Me.DGVPacientes.AllowUserToResizeColumns = False
+        Me.DGVPacientes.AllowUserToResizeRows = False
         Me.DGVPacientes.BackgroundColor = System.Drawing.SystemColors.ActiveCaption
         Me.DGVPacientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DGVPacientes.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3})
         Me.DGVPacientes.Location = New System.Drawing.Point(30, 267)
+        Me.DGVPacientes.MultiSelect = False
         Me.DGVPacientes.Name = "DGVPacientes"
+        Me.DGVPacientes.ReadOnly = True
         Me.DGVPacientes.Size = New System.Drawing.Size(660, 188)
         Me.DGVPacientes.TabIndex = 16
+        '
+        'Column1
+        '
+        Me.Column1.DataPropertyName = "DNI"
+        Me.Column1.HeaderText = "DNI"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        '
+        'Column2
+        '
+        Me.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Column2.DataPropertyName = "NombreCompleto"
+        Me.Column2.HeaderText = "Nombre"
+        Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
+        '
+        'Column3
+        '
+        Me.Column3.DataPropertyName = "Edad"
+        Me.Column3.HeaderText = "Edad"
+        Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
         '
         'DTPFechaNac
         '
@@ -395,4 +425,7 @@ Partial Class Pacientes
     Friend WithEvents Label1 As Label
     Friend WithEvents ComboBoxGenero As ComboBox
     Friend WithEvents TxtPreFijoPac As TextBox
+    Friend WithEvents Column1 As DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As DataGridViewTextBoxColumn
+    Friend WithEvents Column3 As DataGridViewTextBoxColumn
 End Class
