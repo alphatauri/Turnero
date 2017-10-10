@@ -85,6 +85,13 @@
     <Compile Include="Pacientes\IServicioPacientes.vb" />
     <Compile Include="Pacientes\Paciente.vb" />
     <Compile Include="Pacientes\ServicioPacientes.vb" />
+    <Compile Include="Turnos\AgendaProfesional.vb" />
+    <Compile Include="Turnos\IRepositorioProfesionales.vb" />
+    <Compile Include="Turnos\IRepositorioTurnos.vb" />
+    <Compile Include="Turnos\IServicioTurnos.vb" />
+    <Compile Include="Turnos\Profesional.vb" />
+    <Compile Include="Turnos\ServicioTurnos.vb" />
+    <Compile Include="Turnos\Turno.vb" />
     <Compile Include="Usuarios\ILoginService.vb" />
     <Compile Include="Usuarios\LoginService.vb" />
     <Compile Include="Usuarios\IRepositorioUsuario.vb" />

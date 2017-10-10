@@ -40,6 +40,8 @@ Partial Class FormMenu
         Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AyudaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.ASIGNACIÓNDETURNOSToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -76,7 +78,7 @@ Partial Class FormMenu
         '
         'AdministrarToolStripMenuItem
         '
-        Me.AdministrarToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PacientesToolStripMenuItem, Me.ToolStripSeparator2, Me.ProfesionalesToolStripMenuItem, Me.ToolStripSeparator3, Me.AgendasToolStripMenuItem, Me.ToolStripSeparator1, Me.GESTIONDEUSUARIOSToolStripMenuItem})
+        Me.AdministrarToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PacientesToolStripMenuItem, Me.ToolStripSeparator2, Me.ProfesionalesToolStripMenuItem, Me.ToolStripSeparator3, Me.AgendasToolStripMenuItem, Me.ToolStripSeparator1, Me.GESTIONDEUSUARIOSToolStripMenuItem, Me.ToolStripMenuItem1, Me.ASIGNACIÓNDETURNOSToolStripMenuItem})
         Me.AdministrarToolStripMenuItem.Name = "AdministrarToolStripMenuItem"
         Me.AdministrarToolStripMenuItem.Size = New System.Drawing.Size(118, 20)
         Me.AdministrarToolStripMenuItem.Text = "ADMINISTRACION"
@@ -142,6 +144,18 @@ Partial Class FormMenu
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
+        'ASIGNACIÓNDETURNOSToolStripMenuItem
+        '
+        Me.ASIGNACIÓNDETURNOSToolStripMenuItem.Name = "ASIGNACIÓNDETURNOSToolStripMenuItem"
+        Me.ASIGNACIÓNDETURNOSToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F6
+        Me.ASIGNACIÓNDETURNOSToolStripMenuItem.Size = New System.Drawing.Size(230, 22)
+        Me.ASIGNACIÓNDETURNOSToolStripMenuItem.Text = "ASIGNACIÓN DE TURNOS"
+        '
+        'ToolStripMenuItem1
+        '
+        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(227, 6)
+        '
         'FormMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -180,4 +194,6 @@ Partial Class FormMenu
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents GESTIONDEUSUARIOSToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem1 As ToolStripSeparator
+    Friend WithEvents ASIGNACIÓNDETURNOSToolStripMenuItem As ToolStripMenuItem
 End Class

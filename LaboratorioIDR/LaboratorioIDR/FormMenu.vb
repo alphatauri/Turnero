@@ -24,4 +24,9 @@
     Private Sub GESTIONDEUSUARIOSToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GESTIONDEUSUARIOSToolStripMenuItem.Click
         FormABMLogIn.ShowDialog()
     End Sub
+
+    Private Sub ASIGNACIÓNDETURNOSToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ASIGNACIÓNDETURNOSToolStripMenuItem.Click
+        Turnos.ShowDialog()
+        Turnos.Close()
+    End Sub
 End Class

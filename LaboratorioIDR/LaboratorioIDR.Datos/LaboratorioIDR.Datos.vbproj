@@ -82,6 +82,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="RepositorioPacientes.vb" />
+    <Compile Include="RepositorioProfesionales.vb" />
+    <Compile Include="RepositorioTurnos.vb" />
     <Compile Include="UsuarioRepositorio.vb" />
   </ItemGroup>
   <ItemGroup>
