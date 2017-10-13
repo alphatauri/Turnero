@@ -34,7 +34,7 @@ Public Class RepositorioProfesionales : Implements IRepositorioProfesionales
                 qr.CommandType = CommandType.Text
                 qr.CommandText = "SELECT * FROM [dbo].[Agenda] where DniProfPlan = @dni and @fecha between FechaDesde and FechaHasta and (@lunes is null or Lunes = @lunes) and (@martes is null or martes = @martes) and (@miercoles is null or miercoles = @miercoles) and (@jueves is null or jueves = @jueves) and (@viernes is null or viernes = @viernes)"
                 qr.Parameters.Add(New SqlClient.SqlParameter("@dni", dni))
-                qr.Parameters.Add(New SqlClient.SqlParameter("@fecha", dni))
+                qr.Parameters.Add(New SqlClient.SqlParameter("@fecha", fecha))
                 qr.Parameters.Add(New SqlClient.SqlParameter("@lunes", If(fecha.DayOfWeek = DayOfWeek.Monday, True, Nothing)))
                 qr.Parameters.Add(New SqlClient.SqlParameter("@martes", If(fecha.DayOfWeek = DayOfWeek.Tuesday, True, Nothing)))
                 qr.Parameters.Add(New SqlClient.SqlParameter("@miercoles", If(fecha.DayOfWeek = DayOfWeek.Wednesday, True, Nothing)))
@@ -51,17 +51,17 @@ Public Class RepositorioProfesionales : Implements IRepositorioProfesionales
                         lista.Add(New AgendaProfesional With {
                             .Id = reader.GetInt32(0),
                             .Dni = reader.GetDecimal(1),
-                            .Consultorio = reader.GetString(1),
-                            .FechaDesde = reader.GetDateTime(2),
-                            .FechaHasta = reader.GetDateTime(3),
-                            .HoraDesde = reader.GetDateTime(4),
-                            .HoraHasta = reader.GetDateTime(5),
-                            .Slot = reader.GetDecimal(6),
-                            .Lunes = If(reader.IsDBNull(7), Nothing, reader.GetBoolean(7)),
-                            .Martes = If(reader.IsDBNull(8), Nothing, reader.GetBoolean(8)),
-                            .Miercoles = If(reader.IsDBNull(9), Nothing, reader.GetBoolean(9)),
-                            .Jueves = If(reader.IsDBNull(10), Nothing, reader.GetBoolean(10)),
-                            .Viernes = If(reader.IsDBNull(11), Nothing, reader.GetBoolean(11))
+                            .Consultorio = reader.GetString(2),
+                            .FechaDesde = reader.GetDateTime(3),
+                            .FechaHasta = reader.GetDateTime(4),
+                            .HoraDesde = DateTime.Today.Add(reader.GetTimeSpan(5)),
+                            .HoraHasta = DateTime.Today.Add(reader.GetTimeSpan(6)),
+                            .Slot = reader.GetDecimal(7),
+                            .Lunes = If(reader.IsDBNull(8), Nothing, reader.GetBoolean(8)),
+                            .Martes = If(reader.IsDBNull(9), Nothing, reader.GetBoolean(9)),
+                            .Miercoles = If(reader.IsDBNull(10), Nothing, reader.GetBoolean(10)),
+                            .Jueves = If(reader.IsDBNull(11), Nothing, reader.GetBoolean(11)),
+                            .Viernes = If(reader.IsDBNull(12), Nothing, reader.GetBoolean(12))
                         })
                     End While
                 Catch ex As Exception

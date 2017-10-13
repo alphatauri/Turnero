@@ -15,8 +15,41 @@ Public Class ServicioTurnos : Implements IServicioTurnos
     End Function
 
     Public Function ObtenerAgenda(profesional As Profesional, fecha As Date) As List(Of Turno) Implements IServicioTurnos.ObtenerAgenda
-        'Dim registroAgenda = repositorioProfesionales.ObtenerAgenda(profesional.Dni, fecha)
-        Return GenerarRegistrosAgenda()
+        Dim registroAgenda = repositorioProfesionales.ObtenerAgenda(profesional.Dni, fecha)
+        Dim registroTurnos = repositorioTurnos.ObtenerTurnos(profesional.Dni, fecha)
+        Return GenerarRegistros(registroAgenda, registroTurnos)
+    End Function
+
+    Private Function GenerarRegistros(registroAgenda As List(Of AgendaProfesional), registroTurnos As List(Of TurnoAsignado)) As List(Of Turno)
+        Dim lista = New List(Of Turno)
+
+        For Each agenda In registroAgenda
+            Dim horaTurno = agenda.HoraDesde
+            While horaTurno < agenda.HoraHasta
+                lista.Add(New Turno(horaTurno.ToString("HH:mm"), "Libre", Nothing))
+                horaTurno = horaTurno.AddMinutes(agenda.Slot)
+            End While
+        Next
+
+        For Each turno In registroTurnos
+            Dim encontrado = (From c In lista
+                              Where c.Hora = turno.Hora
+                              Select c).FirstOrDefault()
+            If encontrado Is Nothing Then
+                lista.Add(New Turno(turno.Hora, turno.Paciente, turno.Dni))
+            Else
+                encontrado.PacienteNombre = turno.Paciente
+                encontrado.PacienteDni = turno.Dni
+            End If
+        Next
+
+        lista.Sort(Function(x, y) x.Hora.CompareTo(y.Hora))
+
+        Return lista
+    End Function
+
+    Private Function OrdenarPorHora(x As Turno, y As Turno) As Integer
+        Return x.Hora.CompareTo(y.Hora)
     End Function
 
     Private Function GenerarRegistrosAgenda() As List(Of Turno)

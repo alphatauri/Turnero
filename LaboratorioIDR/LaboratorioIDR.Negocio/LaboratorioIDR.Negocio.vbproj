@@ -92,6 +92,7 @@
     <Compile Include="Turnos\Profesional.vb" />
     <Compile Include="Turnos\ServicioTurnos.vb" />
     <Compile Include="Turnos\Turno.vb" />
+    <Compile Include="Turnos\TurnoAsignado.vb" />
     <Compile Include="Usuarios\ILoginService.vb" />
     <Compile Include="Usuarios\LoginService.vb" />
     <Compile Include="Usuarios\IRepositorioUsuario.vb" />
