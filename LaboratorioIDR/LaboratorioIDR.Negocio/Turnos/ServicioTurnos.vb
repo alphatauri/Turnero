@@ -10,6 +10,14 @@ Public Class ServicioTurnos : Implements IServicioTurnos
         Me.repositorioProfesionales = repositorioProfesionales
     End Sub
 
+    Public Function AsignarTurno(turno As Turno, paciente As Paciente) As Turno Implements IServicioTurnos.AsignarTurno
+        Dim turnoCreado = repositorioTurnos.Asignar(paciente.Dni, turno.ProfesionalDni, turno.FechaTurno, turno.Hora, turno.Consultorio)
+        turno.PacienteDni = turnoCreado.Dni
+        turno.PacienteNombre = turnoCreado.Paciente
+        turno.Id = turnoCreado.Id
+        Return turno
+    End Function
+
     Public Function ListarProfesionales() As List(Of Profesional) Implements IServicioTurnos.ListarProfesionales
         Return repositorioProfesionales.Listar()
     End Function
@@ -17,16 +25,19 @@ Public Class ServicioTurnos : Implements IServicioTurnos
     Public Function ObtenerAgenda(profesional As Profesional, fecha As Date) As List(Of Turno) Implements IServicioTurnos.ObtenerAgenda
         Dim registroAgenda = repositorioProfesionales.ObtenerAgenda(profesional.Dni, fecha)
         Dim registroTurnos = repositorioTurnos.ObtenerTurnos(profesional.Dni, fecha)
-        Return GenerarRegistros(registroAgenda, registroTurnos)
+        Return GenerarRegistros(registroAgenda, registroTurnos, profesional.Dni, fecha)
     End Function
 
-    Private Function GenerarRegistros(registroAgenda As List(Of AgendaProfesional), registroTurnos As List(Of TurnoAsignado)) As List(Of Turno)
+    Private Function GenerarRegistros(registroAgenda As List(Of AgendaProfesional),
+                                      registroTurnos As List(Of TurnoAsignado),
+                                      dniProfesional As Decimal,
+                                      fecha As Date) As List(Of Turno)
         Dim lista = New List(Of Turno)
 
         For Each agenda In registroAgenda
             Dim horaTurno = agenda.HoraDesde
             While horaTurno < agenda.HoraHasta
-                lista.Add(New Turno(horaTurno.ToString("HH:mm"), "Libre", Nothing))
+                lista.Add(New Turno(horaTurno.ToString("HH:mm"), "Libre", Nothing, agenda.Consultorio, dniProfesional, fecha))
                 horaTurno = horaTurno.AddMinutes(agenda.Slot)
             End While
         Next
@@ -36,7 +47,7 @@ Public Class ServicioTurnos : Implements IServicioTurnos
                               Where c.Hora = turno.Hora
                               Select c).FirstOrDefault()
             If encontrado Is Nothing Then
-                lista.Add(New Turno(turno.Hora, turno.Paciente, turno.Dni))
+                lista.Add(New Turno(turno.Hora, turno.Paciente, turno.Dni, "Sobreturno", dniProfesional, fecha))
             Else
                 encontrado.PacienteNombre = turno.Paciente
                 encontrado.PacienteDni = turno.Dni
@@ -52,37 +63,4 @@ Public Class ServicioTurnos : Implements IServicioTurnos
         Return x.Hora.CompareTo(y.Hora)
     End Function
 
-    Private Function GenerarRegistrosAgenda() As List(Of Turno)
-        Dim lista = New List(Of Turno) From {
-            New Turno("08:00", "Libre", Nothing),
-            New Turno("08:15", "Libre", Nothing),
-            New Turno("08:30", "Libre", Nothing),
-            New Turno("08:45", "Libre", Nothing),
-            New Turno("09:00", "Libre", Nothing),
-            New Turno("09:15", "Libre", Nothing),
-            New Turno("09:30", "Libre", Nothing),
-            New Turno("09:45", "Libre", Nothing),
-            New Turno("10:00", "Libre", Nothing),
-            New Turno("10:15", "Libre", Nothing),
-            New Turno("10:30", "Libre", Nothing),
-            New Turno("10:45", "Libre", Nothing),
-            New Turno("11:00", "Libre", Nothing),
-            New Turno("11:15", "Libre", Nothing),
-            New Turno("11:30", "Libre", Nothing),
-            New Turno("11:45", "Libre", Nothing),
-            New Turno("12:00", "Libre", Nothing),
-            New Turno("12:15", "Libre", Nothing),
-            New Turno("12:30", "Libre", Nothing),
-            New Turno("12:45", "Libre", Nothing),
-            New Turno("13:00", "Libre", Nothing),
-            New Turno("13:15", "Libre", Nothing),
-            New Turno("13:30", "Libre", Nothing),
-            New Turno("13:45", "Libre", Nothing),
-            New Turno("14:00", "Libre", Nothing),
-            New Turno("14:15", "Libre", Nothing),
-            New Turno("14:30", "Libre", Nothing),
-            New Turno("14:45", "Libre", Nothing)
-        }
-        Return lista
-    End Function
 End Class

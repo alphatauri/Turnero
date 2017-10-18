@@ -30,9 +30,17 @@
         End Set
     End Property
 
-    Public Sub New(hora As String, nombre As String, dni As String)
+    Public Property Consultorio As String
+    Public ReadOnly Property ProfesionalDni As Decimal
+    Public ReadOnly Property FechaTurno As Date
+    Public Property Id As Integer
+
+    Public Sub New(hora As String, nombre As String, dni As String, consultorio As String, dniProfesional As Decimal, fecha As Date)
         Me.Hora = hora
         Me.PacienteNombre = nombre
         Me.PacienteDni = dni
+        Me.Consultorio = consultorio
+        Me.ProfesionalDni = dniProfesional
+        Me.FechaTurno = fecha
     End Sub
 End Class

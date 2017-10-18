@@ -29,12 +29,22 @@ Partial Class Turnos
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.lbPaciente = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.lbBox = New System.Windows.Forms.Label()
+        Me.lbProfesional = New System.Windows.Forms.Label()
+        Me.lbDniPacienteTurno = New System.Windows.Forms.Label()
+        Me.lbPacienteTurno = New System.Windows.Forms.Label()
+        Me.lbHora = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.btnLiberar = New System.Windows.Forms.Button()
+        Me.btnAsignar = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -104,15 +114,6 @@ Partial Class Turnos
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Paciente"
         '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(15, 27)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(44, 13)
-        Me.Label2.TabIndex = 0
-        Me.Label2.Text = "Nombre"
-        '
         'lbPaciente
         '
         Me.lbPaciente.AutoSize = True
@@ -121,6 +122,15 @@ Partial Class Turnos
         Me.lbPaciente.Size = New System.Drawing.Size(57, 13)
         Me.lbPaciente.TabIndex = 1
         Me.lbPaciente.Text = "lbPaciente"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(15, 27)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(44, 13)
+        Me.Label2.TabIndex = 0
+        Me.Label2.Text = "Nombre"
         '
         'FlowLayoutPanel1
         '
@@ -134,8 +144,18 @@ Partial Class Turnos
         '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.Button2)
-        Me.GroupBox2.Controls.Add(Me.Button1)
+        Me.GroupBox2.Controls.Add(Me.lbBox)
+        Me.GroupBox2.Controls.Add(Me.lbProfesional)
+        Me.GroupBox2.Controls.Add(Me.lbDniPacienteTurno)
+        Me.GroupBox2.Controls.Add(Me.lbPacienteTurno)
+        Me.GroupBox2.Controls.Add(Me.lbHora)
+        Me.GroupBox2.Controls.Add(Me.Label7)
+        Me.GroupBox2.Controls.Add(Me.Label6)
+        Me.GroupBox2.Controls.Add(Me.Label5)
+        Me.GroupBox2.Controls.Add(Me.Label4)
+        Me.GroupBox2.Controls.Add(Me.Label3)
+        Me.GroupBox2.Controls.Add(Me.btnLiberar)
+        Me.GroupBox2.Controls.Add(Me.btnAsignar)
         Me.GroupBox2.Location = New System.Drawing.Point(349, 85)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(326, 277)
@@ -143,23 +163,113 @@ Partial Class Turnos
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Datos del Turno"
         '
-        'Button1
+        'lbBox
         '
-        Me.Button1.Location = New System.Drawing.Point(164, 241)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Asignar"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.lbBox.AutoSize = True
+        Me.lbBox.Location = New System.Drawing.Point(94, 149)
+        Me.lbBox.Name = "lbBox"
+        Me.lbBox.Size = New System.Drawing.Size(45, 13)
+        Me.lbBox.TabIndex = 11
+        Me.lbBox.Text = "Label12"
         '
-        'Button2
+        'lbProfesional
         '
-        Me.Button2.Location = New System.Drawing.Point(245, 241)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 1
-        Me.Button2.Text = "Liberar"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.lbProfesional.AutoSize = True
+        Me.lbProfesional.Location = New System.Drawing.Point(94, 121)
+        Me.lbProfesional.Name = "lbProfesional"
+        Me.lbProfesional.Size = New System.Drawing.Size(45, 13)
+        Me.lbProfesional.TabIndex = 10
+        Me.lbProfesional.Text = "Label11"
+        '
+        'lbDniPacienteTurno
+        '
+        Me.lbDniPacienteTurno.AutoSize = True
+        Me.lbDniPacienteTurno.Location = New System.Drawing.Point(94, 93)
+        Me.lbDniPacienteTurno.Name = "lbDniPacienteTurno"
+        Me.lbDniPacienteTurno.Size = New System.Drawing.Size(45, 13)
+        Me.lbDniPacienteTurno.TabIndex = 9
+        Me.lbDniPacienteTurno.Text = "Label10"
+        '
+        'lbPacienteTurno
+        '
+        Me.lbPacienteTurno.AutoSize = True
+        Me.lbPacienteTurno.Location = New System.Drawing.Point(94, 63)
+        Me.lbPacienteTurno.Name = "lbPacienteTurno"
+        Me.lbPacienteTurno.Size = New System.Drawing.Size(39, 13)
+        Me.lbPacienteTurno.TabIndex = 8
+        Me.lbPacienteTurno.Text = "Label9"
+        '
+        'lbHora
+        '
+        Me.lbHora.AutoSize = True
+        Me.lbHora.Location = New System.Drawing.Point(94, 33)
+        Me.lbHora.Name = "lbHora"
+        Me.lbHora.Size = New System.Drawing.Size(39, 13)
+        Me.lbHora.TabIndex = 7
+        Me.lbHora.Text = "Label8"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(6, 149)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(25, 13)
+        Me.Label7.TabIndex = 6
+        Me.Label7.Text = "Box"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(6, 121)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(59, 13)
+        Me.Label6.TabIndex = 5
+        Me.Label6.Text = "Profesional"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(6, 93)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(23, 13)
+        Me.Label5.TabIndex = 4
+        Me.Label5.Text = "Dni"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(6, 63)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(49, 13)
+        Me.Label4.TabIndex = 3
+        Me.Label4.Text = "Paciente"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(6, 33)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(30, 13)
+        Me.Label3.TabIndex = 2
+        Me.Label3.Text = "Hora"
+        '
+        'btnLiberar
+        '
+        Me.btnLiberar.Location = New System.Drawing.Point(245, 241)
+        Me.btnLiberar.Name = "btnLiberar"
+        Me.btnLiberar.Size = New System.Drawing.Size(75, 23)
+        Me.btnLiberar.TabIndex = 1
+        Me.btnLiberar.Text = "Liberar"
+        Me.btnLiberar.UseVisualStyleBackColor = True
+        '
+        'btnAsignar
+        '
+        Me.btnAsignar.Location = New System.Drawing.Point(164, 241)
+        Me.btnAsignar.Name = "btnAsignar"
+        Me.btnAsignar.Size = New System.Drawing.Size(75, 23)
+        Me.btnAsignar.TabIndex = 0
+        Me.btnAsignar.Text = "Asignar"
+        Me.btnAsignar.UseVisualStyleBackColor = True
         '
         'Turnos
         '
@@ -181,6 +291,7 @@ Partial Class Turnos
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -197,6 +308,16 @@ Partial Class Turnos
     Friend WithEvents lbPaciente As Label
     Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
     Friend WithEvents GroupBox2 As GroupBox
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button1 As Button
+    Friend WithEvents btnLiberar As Button
+    Friend WithEvents btnAsignar As Button
+    Friend WithEvents lbBox As Label
+    Friend WithEvents lbProfesional As Label
+    Friend WithEvents lbDniPacienteTurno As Label
+    Friend WithEvents lbPacienteTurno As Label
+    Friend WithEvents lbHora As Label
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label3 As Label
 End Class
