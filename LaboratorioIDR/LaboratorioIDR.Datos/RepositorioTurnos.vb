@@ -83,4 +83,20 @@ Public Class RepositorioTurnos : Implements IRepositorioTurnos
         End Using
         Return lista
     End Function
+
+    Public Sub Liberar(idTurno As Integer) Implements IRepositorioTurnos.Liberar
+        Using con = Conexion.GetConnection()
+            Using qr = con.CreateCommand
+                qr.CommandType = CommandType.Text
+                qr.CommandText = "delete from Horarios where IdTurno = @idTurno"
+                qr.Parameters.Add(New SqlParameter("@idTurno", idTurno))
+                Try
+                    con.Open()
+                    qr.ExecuteNonQuery()
+                Catch ex As Exception
+                    Throw New ProblemaTecnicoException("Ha ocurrido un error al obtener los turnos", ex)
+                End Try
+            End Using
+        End Using
+    End Sub
 End Class

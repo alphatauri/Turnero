@@ -26,9 +26,9 @@ Partial Class Turnos
         Me.DTPFechaAtencion = New System.Windows.Forms.DateTimePicker()
         Me.LbFecDsdPlan = New System.Windows.Forms.Label()
         Me.LbProfPlan = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.DniPacienteTB = New System.Windows.Forms.TextBox()
         Me.lbPaciente = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
@@ -56,17 +56,17 @@ Partial Class Turnos
         Me.CBProfesionales.Location = New System.Drawing.Point(125, 6)
         Me.CBProfesionales.Name = "CBProfesionales"
         Me.CBProfesionales.Size = New System.Drawing.Size(218, 21)
-        Me.CBProfesionales.TabIndex = 20
+        Me.CBProfesionales.TabIndex = 0
         '
         'DTPFechaAtencion
         '
-        Me.DTPFechaAtencion.CustomFormat = "dd/MM/yyyy"
+        Me.DTPFechaAtencion.CustomFormat = "dd/MM/yyyy dddd"
         Me.DTPFechaAtencion.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.DTPFechaAtencion.Location = New System.Drawing.Point(125, 33)
         Me.DTPFechaAtencion.MinDate = New Date(2017, 6, 24, 0, 0, 0, 0)
         Me.DTPFechaAtencion.Name = "DTPFechaAtencion"
         Me.DTPFechaAtencion.Size = New System.Drawing.Size(218, 20)
-        Me.DTPFechaAtencion.TabIndex = 21
+        Me.DTPFechaAtencion.TabIndex = 1
         Me.DTPFechaAtencion.Value = New Date(2017, 6, 24, 20, 28, 35, 0)
         '
         'LbFecDsdPlan
@@ -87,24 +87,10 @@ Partial Class Turnos
         Me.LbProfPlan.TabIndex = 22
         Me.LbProfPlan.Text = "Profesional"
         '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(12, 62)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(107, 13)
-        Me.Label1.TabIndex = 25
-        Me.Label1.Text = "Documento Paciente"
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(125, 59)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(218, 20)
-        Me.TextBox1.TabIndex = 24
-        '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Label1)
+        Me.GroupBox1.Controls.Add(Me.DniPacienteTB)
         Me.GroupBox1.Controls.Add(Me.lbPaciente)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Location = New System.Drawing.Point(349, 6)
@@ -114,19 +100,36 @@ Partial Class Turnos
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Paciente"
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(6, 16)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(26, 13)
+        Me.Label1.TabIndex = 27
+        Me.Label1.Text = "DNI"
+        '
+        'DniPacienteTB
+        '
+        Me.DniPacienteTB.Location = New System.Drawing.Point(97, 13)
+        Me.DniPacienteTB.Name = "DniPacienteTB"
+        Me.DniPacienteTB.Size = New System.Drawing.Size(223, 20)
+        Me.DniPacienteTB.TabIndex = 2
+        '
         'lbPaciente
         '
         Me.lbPaciente.AutoSize = True
-        Me.lbPaciente.Location = New System.Drawing.Point(82, 27)
+        Me.lbPaciente.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbPaciente.Location = New System.Drawing.Point(94, 47)
         Me.lbPaciente.Name = "lbPaciente"
-        Me.lbPaciente.Size = New System.Drawing.Size(57, 13)
+        Me.lbPaciente.Size = New System.Drawing.Size(67, 13)
         Me.lbPaciente.TabIndex = 1
         Me.lbPaciente.Text = "lbPaciente"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(15, 27)
+        Me.Label2.Location = New System.Drawing.Point(6, 47)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(44, 13)
         Me.Label2.TabIndex = 0
@@ -139,7 +142,7 @@ Partial Class Turnos
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(15, 85)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
         Me.FlowLayoutPanel1.Size = New System.Drawing.Size(328, 277)
-        Me.FlowLayoutPanel1.TabIndex = 28
+        Me.FlowLayoutPanel1.TabIndex = 3
         Me.FlowLayoutPanel1.WrapContents = False
         '
         'GroupBox2
@@ -159,52 +162,57 @@ Partial Class Turnos
         Me.GroupBox2.Location = New System.Drawing.Point(349, 85)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(326, 277)
-        Me.GroupBox2.TabIndex = 29
+        Me.GroupBox2.TabIndex = 5
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Datos del Turno"
         '
         'lbBox
         '
         Me.lbBox.AutoSize = True
+        Me.lbBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbBox.Location = New System.Drawing.Point(94, 149)
         Me.lbBox.Name = "lbBox"
-        Me.lbBox.Size = New System.Drawing.Size(45, 13)
+        Me.lbBox.Size = New System.Drawing.Size(52, 13)
         Me.lbBox.TabIndex = 11
         Me.lbBox.Text = "Label12"
         '
         'lbProfesional
         '
         Me.lbProfesional.AutoSize = True
+        Me.lbProfesional.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbProfesional.Location = New System.Drawing.Point(94, 121)
         Me.lbProfesional.Name = "lbProfesional"
-        Me.lbProfesional.Size = New System.Drawing.Size(45, 13)
+        Me.lbProfesional.Size = New System.Drawing.Size(52, 13)
         Me.lbProfesional.TabIndex = 10
         Me.lbProfesional.Text = "Label11"
         '
         'lbDniPacienteTurno
         '
         Me.lbDniPacienteTurno.AutoSize = True
+        Me.lbDniPacienteTurno.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbDniPacienteTurno.Location = New System.Drawing.Point(94, 93)
         Me.lbDniPacienteTurno.Name = "lbDniPacienteTurno"
-        Me.lbDniPacienteTurno.Size = New System.Drawing.Size(45, 13)
+        Me.lbDniPacienteTurno.Size = New System.Drawing.Size(52, 13)
         Me.lbDniPacienteTurno.TabIndex = 9
         Me.lbDniPacienteTurno.Text = "Label10"
         '
         'lbPacienteTurno
         '
         Me.lbPacienteTurno.AutoSize = True
+        Me.lbPacienteTurno.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbPacienteTurno.Location = New System.Drawing.Point(94, 63)
         Me.lbPacienteTurno.Name = "lbPacienteTurno"
-        Me.lbPacienteTurno.Size = New System.Drawing.Size(39, 13)
+        Me.lbPacienteTurno.Size = New System.Drawing.Size(45, 13)
         Me.lbPacienteTurno.TabIndex = 8
         Me.lbPacienteTurno.Text = "Label9"
         '
         'lbHora
         '
         Me.lbHora.AutoSize = True
+        Me.lbHora.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbHora.Location = New System.Drawing.Point(94, 33)
         Me.lbHora.Name = "lbHora"
-        Me.lbHora.Size = New System.Drawing.Size(39, 13)
+        Me.lbHora.Size = New System.Drawing.Size(45, 13)
         Me.lbHora.TabIndex = 7
         Me.lbHora.Text = "Label8"
         '
@@ -258,7 +266,7 @@ Partial Class Turnos
         Me.btnLiberar.Location = New System.Drawing.Point(245, 241)
         Me.btnLiberar.Name = "btnLiberar"
         Me.btnLiberar.Size = New System.Drawing.Size(75, 23)
-        Me.btnLiberar.TabIndex = 1
+        Me.btnLiberar.TabIndex = 7
         Me.btnLiberar.Text = "Liberar"
         Me.btnLiberar.UseVisualStyleBackColor = True
         '
@@ -267,7 +275,7 @@ Partial Class Turnos
         Me.btnAsignar.Location = New System.Drawing.Point(164, 241)
         Me.btnAsignar.Name = "btnAsignar"
         Me.btnAsignar.Size = New System.Drawing.Size(75, 23)
-        Me.btnAsignar.TabIndex = 0
+        Me.btnAsignar.TabIndex = 6
         Me.btnAsignar.Text = "Asignar"
         Me.btnAsignar.UseVisualStyleBackColor = True
         '
@@ -276,13 +284,11 @@ Partial Class Turnos
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(687, 374)
-        Me.Controls.Add(Me.GroupBox2)
-        Me.Controls.Add(Me.FlowLayoutPanel1)
-        Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.CBProfesionales)
         Me.Controls.Add(Me.DTPFechaAtencion)
+        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.FlowLayoutPanel1)
+        Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.LbFecDsdPlan)
         Me.Controls.Add(Me.LbProfPlan)
         Me.Name = "Turnos"
@@ -301,8 +307,6 @@ Partial Class Turnos
     Friend WithEvents DTPFechaAtencion As DateTimePicker
     Friend WithEvents LbFecDsdPlan As Label
     Friend WithEvents LbProfPlan As Label
-    Friend WithEvents Label1 As Label
-    Friend WithEvents TextBox1 As TextBox
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents Label2 As Label
     Friend WithEvents lbPaciente As Label
@@ -320,4 +324,6 @@ Partial Class Turnos
     Friend WithEvents Label5 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Label3 As Label
+    Friend WithEvents Label1 As Label
+    Friend WithEvents DniPacienteTB As TextBox
 End Class

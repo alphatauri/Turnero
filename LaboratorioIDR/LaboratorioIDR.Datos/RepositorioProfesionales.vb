@@ -32,14 +32,9 @@ Public Class RepositorioProfesionales : Implements IRepositorioProfesionales
         Using con = Conexion.GetConnection()
             Using qr = con.CreateCommand
                 qr.CommandType = CommandType.Text
-                qr.CommandText = "SELECT * FROM [dbo].[Agenda] where DniProfPlan = @dni and @fecha between FechaDesde and FechaHasta and (@lunes is null or Lunes = @lunes) and (@martes is null or martes = @martes) and (@miercoles is null or miercoles = @miercoles) and (@jueves is null or jueves = @jueves) and (@viernes is null or viernes = @viernes)"
+                qr.CommandText = "declare @diaSemana int = DatePart(weekday, @fecha); select * from agenda where DniProfPlan = @dni and ((@diaSemana = 2 and Lunes = 1) or  (@diaSemana = 3 and Martes = 1) or  (@diaSemana = 4 and Miercoles = 1) or  (@diaSemana = 5 and Jueves = 1) or  (@diaSemana = 6 and Viernes = 1))"
                 qr.Parameters.Add(New SqlClient.SqlParameter("@dni", dni))
                 qr.Parameters.Add(New SqlClient.SqlParameter("@fecha", fecha))
-                qr.Parameters.Add(New SqlClient.SqlParameter("@lunes", If(fecha.DayOfWeek = DayOfWeek.Monday, True, Nothing)))
-                qr.Parameters.Add(New SqlClient.SqlParameter("@martes", If(fecha.DayOfWeek = DayOfWeek.Tuesday, True, Nothing)))
-                qr.Parameters.Add(New SqlClient.SqlParameter("@miercoles", If(fecha.DayOfWeek = DayOfWeek.Wednesday, True, Nothing)))
-                qr.Parameters.Add(New SqlClient.SqlParameter("@jueves", If(fecha.DayOfWeek = DayOfWeek.Thursday, True, Nothing)))
-                qr.Parameters.Add(New SqlClient.SqlParameter("@viernes", If(fecha.DayOfWeek = DayOfWeek.Friday, True, Nothing)))
 
                 Dim lista As List(Of AgendaProfesional) = Nothing
 

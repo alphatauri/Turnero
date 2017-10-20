@@ -10,6 +10,14 @@ Public Class ServicioTurnos : Implements IServicioTurnos
         Me.repositorioProfesionales = repositorioProfesionales
     End Sub
 
+    Public Sub LiberarTurno(turnoActual As Turno) Implements IServicioTurnos.LiberarTurno
+        If (turnoActual.Id < 1) Then
+            Return
+        End If
+
+        repositorioTurnos.Liberar(turnoActual.Id)
+    End Sub
+
     Public Function AsignarTurno(turno As Turno, paciente As Paciente) As Turno Implements IServicioTurnos.AsignarTurno
         Dim turnoCreado = repositorioTurnos.Asignar(paciente.Dni, turno.ProfesionalDni, turno.FechaTurno, turno.Hora, turno.Consultorio)
         turno.PacienteDni = turnoCreado.Dni
@@ -47,10 +55,13 @@ Public Class ServicioTurnos : Implements IServicioTurnos
                               Where c.Hora = turno.Hora
                               Select c).FirstOrDefault()
             If encontrado Is Nothing Then
-                lista.Add(New Turno(turno.Hora, turno.Paciente, turno.Dni, "Sobreturno", dniProfesional, fecha))
+                Dim a = New Turno(turno.Hora, turno.Paciente, turno.Dni, "Sobreturno", dniProfesional, fecha)
+                a.Id = turno.Id
+                lista.Add(a)
             Else
                 encontrado.PacienteNombre = turno.Paciente
                 encontrado.PacienteDni = turno.Dni
+                encontrado.Id = turno.Id
             End If
         Next
 

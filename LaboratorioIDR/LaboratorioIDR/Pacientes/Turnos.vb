@@ -14,20 +14,27 @@ Public Class Turnos
                                                 New ServicioPacientes(New RepositorioPacientes()))
         DTPFechaAtencion.MinDate = DateTime.Today
         DTPFechaAtencion.MaxDate = DateTime.Today.AddMonths(6)
+        LimpiarDatosPaciente()
     End Sub
 
     Friend Sub MostrarProfesionales(profesionales As List(Of Profesional))
-        profesionales.Sort()
+        profesionales.Sort(New ComparadorProfesionales)
         CBProfesionales.Items.Clear()
         CBProfesionales.DisplayMember = "NombreCompleto"
         CBProfesionales.DataSource = profesionales
     End Sub
 
     Friend Sub LimpiarControles()
-        DTPFechaAtencion.Value = DateTime.Today
-
-        LimpiarDatosPaciente()
+        LimpiarDatosTurno()
         CBProfesionales.Focus()
+    End Sub
+
+    Private Sub LimpiarDatosTurno()
+        lbHora.Text = ""
+        lbPacienteTurno.Text = ""
+        lbBox.Text = ""
+        lbProfesional.Text = ""
+        lbDniPacienteTurno.Text = ""
     End Sub
 
     Private Sub Turnos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -39,6 +46,7 @@ Public Class Turnos
     End Sub
 
     Friend Sub MostrarAgenda(agenda As List(Of Turno))
+        FlowLayoutPanel1.SuspendLayout()
         FlowLayoutPanel1.Controls.Clear()
         For Each turno In agenda
             Dim btn = New Button
@@ -47,9 +55,10 @@ Public Class Turnos
             btn.Width = 300
             btn.Height = 30
             btn.Tag = turno
-            AddHandler btn.Click, AddressOf btnTurno
+            AddHandler btn.Click, AddressOf BtnTurno
             FlowLayoutPanel1.Controls.Add(btn)
         Next
+        FlowLayoutPanel1.ResumeLayout()
     End Sub
 
     Friend Sub MostrarDatosTurno(turno As Turno)
@@ -76,7 +85,7 @@ Public Class Turnos
         btnLiberar.Enabled = True
     End Sub
 
-    Private Sub btnTurno(sender As Object, e As EventArgs)
+    Private Sub BtnTurno(sender As Object, e As EventArgs)
         Dim btn As Button = sender
         Dim turno As Turno = btn.Tag
         controlador.TurnoSeleccionado(turno)
@@ -91,15 +100,49 @@ Public Class Turnos
         MessageBox.Show(mensaje)
     End Sub
 
-    Private Sub TextBox1_Leave(sender As Object, e As EventArgs) Handles TextBox1.Leave
-        controlador.BuscarPaciente(TextBox1.Text)
-        Dim profesional = CType(CBProfesionales.SelectedValue, Profesional)
-        Dim fecha = DTPFechaAtencion.Value
-
-        controlador.BuscarTurnos(profesional, fecha)
+    Private Sub DniPaciente_Leave(sender As Object, e As EventArgs) Handles DniPacienteTB.Leave
+        controlador.BuscarPaciente(DniPacienteTB.Text)
     End Sub
 
     Private Sub btnAsignar_Click(sender As Object, e As EventArgs) Handles btnAsignar.Click
         controlador.AsignarTurnoSeleccionadoAPaciente(pacienteActual)
     End Sub
+
+    Private Sub btnLiberar_Click(sender As Object, e As EventArgs) Handles btnLiberar.Click
+        controlador.LiberarTurnoSeleccionado()
+    End Sub
+
+    Private Sub DniPaciente_KeyPress(sender As Object, e As KeyPressEventArgs) Handles DniPacienteTB.KeyPress
+        If EsNumero(e.KeyChar) Then
+            e.Handled = False
+        Else
+            SiEsEnterTab(e.KeyChar)
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub CBProfesionales_SelectedValueChanged(sender As Object, e As EventArgs) Handles CBProfesionales.SelectedValueChanged
+        Dim profesionalSeleccionado As Profesional = CBProfesionales.SelectedValue
+        If profesionalSeleccionado Is Nothing Then
+            Return
+        End If
+
+        controlador.CambioDeProfesional(profesionalSeleccionado)
+    End Sub
+
+    Private Sub DTPFechaAtencion_ValueChanged(sender As Object, e As EventArgs) Handles DTPFechaAtencion.ValueChanged
+        Dim fechaSeleccionada As Date = DTPFechaAtencion.Value
+
+        If controlador IsNot Nothing Then
+            controlador.CambioDeFecha(fechaSeleccionada)
+            DTPFechaAtencion.Focus()
+        End If
+    End Sub
+
+    Friend Class ComparadorProfesionales : Implements IComparer(Of Profesional)
+
+        Public Function Compare(x As Profesional, y As Profesional) As Integer Implements IComparer(Of Profesional).Compare
+            Return x.NombreCompleto.CompareTo(y.NombreCompleto)
+        End Function
+    End Class
 End Class
